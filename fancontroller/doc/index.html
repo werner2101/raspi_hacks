@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>raspi tilted window fan controller</title>
+  </head>
+
+  <body>
+    <h1>raspi tilted window fan controller</h1>
+I've build a fan controller with a raspi that drives 4 fans and is placed on top of a tilted window. <p>
+
+A raspi turns the fans on and of, measures the temperature inside and outside of the room. <p>
+
+The raspi tracks the temperature and stores the data in <a href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">HDF5 files</a> for later analyses. <p>
+
+<h2>mechanics</h2>
+<img src="fan_top.jpg" alt="top view of fan with raspi" style="width:600px"> <br>
+
+A wooden construction closes the gap between the tilted window and the frame. <p>
+
+<img src="fan_side.jpg" alt="top view of fan with raspi" style="width:200px"> 
+
+<img src="fan_raspi.jpg" alt="top view of fan with raspi" style="width:400px"> <br>
+
+Beside the last fan I've placed the raspi with a power supply, some leds and drivers for the fans.<br>
+
+Here are some <a href="../mechanics/window_fans.svg">sketches of the mechanics</a> drawn with inkscape.
+
+<h2>electronics</h2>
+Here's a link to the <a href="../electronics/fancontroller.pdf">schematic of the extra circuit</a> <P>
+
+The used parts are: <br>
+    <ul>
+      <li> A 24V to 5V switching regulater provides the power for the raspi. It's a <a href="http://www.tracopower.com/products/tsr1.pdf">Traco TSR1-2450</a> </li>
+      <li> There are 3 connectors for temperature sensors, I'm using <a href="https://datasheets.maximintegrated.com/en/ds/DS18S20.pdf">DS18S20</a> senosors.</li>
+      <li> To switch the fans I've used <i>Infineon BSP742 highside switches</i></li>
+    </ul>
+     
+<h2>software</h2>
+Basically 200 lines of python code, see <a href="../src/fancontroller.py">fancontroller.py</a>. <br>
+
+Code has not all features, but it works for now.
+
+
+<h2>results</h2>
+Here are some measurements of the temperatur sensors over a few days. <br>
+
+<img src="temp_2days.png" alt="temperatur graph for 2 days" style="width:600px"> <p>
+
+While the temperatur sensor inside has a flat line the outside temperature measurements are pretty bad. When the fans are running the warm air from inside heats up the sensors outside. <p>
+
+Seems I've to find a better place for the two outside sensors...
+
+    <hr>
+    <address><a href="mailto:werner@linux-xl08.site">Werner Hoch</a></address>
+<!-- Created: Sun Jun  5 11:03:18 CEST 2016 -->
+"<!-- hhmts start -->
+Last modified: Sun Jun  5 11:51:37 CEST 2016
+<!-- hhmts end -->
+  </body>
+</html>
